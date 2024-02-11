@@ -2,7 +2,7 @@
 
 # Node.js: Tutorial
 
-Use this tutorial as a guide to learn Node.js. Each unit contains an annotated lesson with working examples.
+이 튜토리얼을 Node.js를 배우기위한 가이드로 사용하세요. 각각의 유닛에는 실행되는 예제가 포함된 주석이 달린 수업이 있습니다.
 
 # Topics
 
