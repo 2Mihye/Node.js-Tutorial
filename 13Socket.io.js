@@ -1,53 +1,52 @@
-/* Web Sockets */
+/* 웹 소켓 (Web Sockets) */
 /*
- - Web sockets allow the creation of connections between clients and server.
- - On these connections, data can flow (back and forward) in real time
+ - 웹 소켓은 클라이언트와 서버 간의 연결을 생성할 수 있다.
+ - 이러한 연결에서 데이터는 실시간으로 이동할 수 있다.
  */
 
 /* Socket.io */
 /*
- - Great tool for real-time applications
- - Provides fallbacks in case the client doesn't support web sockets
+ - 실시간 애플리케이션에 훌륭한 도구
+ - 클라이언트가 웹 소켓을 지원하지 않는 경우 대체 동작 제공
 
- Install by running:
+ 소켓 설치:
  npm install --save socket.io
  */
-var express = require('express');
+var express = require("express");
 var app = express();
-// Create an http server and dispatch the requests to express
-var server = require('http').createServer(app);
-// Load the socket.io module and allow it to use the http server to listen for requests
-var io = require('socket.io')(server);
+// http 서버를 만들고 요청을 express에 전달
+var server = require("http").createServer(app);
+// socket.io 모듈을 로드하고 요청을 수신하기 위해 http 서버를 사용할 수 있도록 한다.
+var io = require("socket.io")(server);
 
-// Listen for connection events (on socket.io) and define the callback function
-io.on('connection', function (client) {
-    console.log('Client connected...');
-    // Emits the 'messages' event on the clients and sends the object {socket:io}
-    client.emit('messages', {socket: 'i.o'})
+// 'connection' 이벤트를 수신하고 콜백 함수 정의
+io.on("connection", function (client) {
+  console.log("Client connected...");
+  // 클라이언트에 'messages' 이벤트를 발생시키고 {socket: 'i.o'} 객체 전송
+  client.emit("messages", { socket: "i.o" });
 
-    client.on('fromClient', function (data) {
-        console.log(data);
-        // Use broadcast to send a message to all the clients that are connected
-        client.broadcast.emit("fromServer", {fromServer: 'fromServer'});
-    });
+  client.on("fromClient", function (data) {
+    console.log(data);
+    // broadcast를 사용하여 연결된 모든 클라이언트에 메시지를 보내기
+    client.broadcast.emit("fromServer", { fromServer: "fromServer" });
+  });
+});
 
-})
-
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/socket.html');
+app.get("/", function (req, res) {
+  res.sendFile(__dirname + "/socket.html");
 });
 
 server.listen(8080);
 
 /*
- Run the following cmd to start node and create the scoket.io server:
+ 다음 코드를 입력하여 노드를 실행하고 socket.io 서버를 생성한다.
  node '13Socket.io.js'
 
- - See socket.html for client-side code
+ - 클라이언트측 코드는 socket.html을 볼 것
 
- On your browser: localhost:8080
+ 브라우저: localhost:8080
 
- Expected response:
- - console.log with "i.o", numbers should be printed
- - On node, the numbers should keep counting up
+ 나와야 할 결과물:
+ -"i.o"와 함께 console.log에서 숫자가 출력되어야 한다.
+ - Node에서는 숫자가 계속 증가해야 한다.
  */

@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Socket.io</title>
-    <!-- Include the socket.io library, Socket.IO servers automatically serve the client -->
+    <!-- Socket.io 라이브러리 포함: Socket.IO 서버는 클라이언트를 자동으로 제공한다. -->
     <script src="/socket.io/socket.io.js"></script>
-</head>
-<body>
-<script>
+  </head>
+  <body>
+    <script>
+      // 서버에 연결
+      var socket = io.connect("http://localhost:8080");
 
-    // Connect to the server
-    var socket = io.connect('http://localhost:8080');
-
-    <!-- Listens to the 'messages' event -->
-    socket.on('messages', function (data) {
+      <!-- Listens to the 'messages' event -->
+      socket.on("messages", function (data) {
         console.log(data.socket);
-    });
-    socket.on('fromServer', function (data) {
+      });
+      socket.on("fromServer", function (data) {
         console.log(data.fromServer);
-    });
+      });
 
-    <!-- Creates a new message and sends it to the server -->
-    socket.emit('fromClient', "fromClient");
-
-</script>
-</body>
+      <!-- Creates a new message and sends it to the server -->
+      socket.emit("fromClient", "fromClient");
+    </script>
+  </body>
 </html>

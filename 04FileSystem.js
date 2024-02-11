@@ -1,25 +1,25 @@
 /*
- File System (using streams)
+ 파일 시스템 (스트림 사용)
 
- Reading from a file in the File system using streams is easy with Node.js, follow this example:
+  Node.js를 사용하여 파일 시스템에서 파일을 읽는 것은 스트림을 사용하면 간단하다.
  */
-// Require the filesystem module
-var fs = require('fs');
-// Create a 'read' stream from the original file
+// 파일 시스템 모듈 요구
+var fs = require("fs");
+// 원본 파일에서 'read' 스트림을 만들기
 var readFile = fs.createReadStream("README.md");
-// Create a 'write' stream to the destination file
+// 대상 파일에 'write' 스트림을 만들기
 var writeFile = fs.createWriteStream("README_copy.md");
-// Streaming is simple with the 'pipe' function
-// The pipe function pulls all the data out of a readable stream, and writes it to the supplied destination,
-// automatically managing the flow so that the destination is not overwhelmed by a fast readable stream
+// pipe함수를 사용하면 스트리밍이 간단해진다.
+// pipe 함수는 읽을 수 있는 스트림에서 모든 데이터를 끌어내어 지정된 목적지에 기록하며,
+// 목적지가 빠르게 읽을 수 있는 스트림에 압도되지 않도록 하기위해 자동으로 흐름을 관리한다.
 readFile.pipe(writeFile);
 
 /*
- Run the following cmd to start node and read the file
+ 다음 코드를 입력하여 노드를 실행하고, 파일을 읽는다.
 
  node '.\04File System.js'
 
- Expected response:
+ 나와야 할 결과물:
 
- A copy of README.md should be created in your file system
+ README.md의 복사본이 파일 시스템에 만들어져야 한다.
  */

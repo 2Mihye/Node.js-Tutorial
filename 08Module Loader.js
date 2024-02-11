@@ -1,28 +1,26 @@
-// Load the custom module using 'require'
-var moduleFunction = require('./7modules');
-// It is possible to use all of the export methods from the custom Module
+// 'require'를 사용하여 사용자 지정 모듈을 로드한다.
+var moduleFunction = require("./7modules");
+// 사용자 지정 모듈에서 모든 익스포트 메서드를 사용할 수 있다.
 moduleFunction();
 
-// When you require a module using './', it is going to look in the same directory
-// as the application, for a file with that name
-var makeRequest = require('./9 - http module');
-makeRequest('http req 1');
-makeRequest('http req 2');
+// './'를 사용하여 모듈을 요청할 때, 애플리케이션과 동일한 디렉토리에서 해당 이름의 파일을 찾는다.
+var makeRequest = require("./9 - http module");
+makeRequest("http req 1");
+makeRequest("http req 2");
 
-// When you use '../', it is going to look in the parent directory
+// '../'를 사용할 때, 상위 디렉토리에서 찾는다.
 
-// When you don't specify any directory, it is going to search in node_modules directory (inside the current app)
+// 디렉토리를 지정하지 않으면 현재 앱 내의 node_modules 디렉토리에서 찾는다.
 
-// When 'require' doesn't find the module in the current app, it is going to search
-// in node_modules directory (Home directory)
+// 'require'가 현재 앱에서 모듈을 찾지 못하면 node_modules 디렉토리 (홈 디렉토리 내)에서 찾을것이다.
 
 /*
- Run the following cmd to start node and load the custom module
+ 다음 코드를 입력하여 노드를 실행하고 사용자 지정 모듈을 로드한다.
 
  node '.\08 - Module Loader.js'
 
- Expected response:
+ 나와야 할 결과물:
 
- - "Module loaded" from '7Modules'
- - Two HTTP requests from '9Http Module'
+ - "Module loaded"에서 '7Modules'
+ - '9Http Module'에서 두 개의 HTTP 요청
  */
