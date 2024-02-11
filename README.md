@@ -84,7 +84,7 @@ console.log("Listening on port 8080...");
  */
 ```
 
-# Events
+# 이벤트
 
 ```Javascript
 /* 이벤트
@@ -179,7 +179,7 @@ console.log("Listening on port 8080...");
  */
 ```
 
-# Modules
+# 모듈
 
 ```Javascript
 /*
